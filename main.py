@@ -17,7 +17,6 @@ app_secret = os.environ["APP_SECRET"]
 user_id = os.environ["USER_ID"]
 user_id2 = os.environ["USER_ID2"]
 template_id = os.environ["TEMPLATE_ID"]
-user_ids = os.environ["USER_IDS"]
 
 
 
@@ -26,9 +25,6 @@ def get_weather():
   res = requests.get(url).json()
   weather = res['data']['list'][0]
   
-  print(weather)
-  for user in user_ids:
-    print(user)
   
   return weather['weather'], math.floor(weather['temp']), math.floor(weather['low']), math.floor(weather['high'])
 
@@ -57,10 +53,7 @@ client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
 wea, temperature,low,high = get_weather()
 data = {"low":{"value":low},"high":{"value":high},"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
-#res = wm.send_template(user_id, template_id, data)
-#res2 = wm.send_template(user_id2, template_id, data)
+res = wm.send_template(user_id, template_id, data)
+res2 = wm.send_template(user_id2, template_id, data)
 
-#for user in user_ids:
-    #res = wm.send_template(user, template_id, data)
-    #print(res)
 
