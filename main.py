@@ -60,7 +60,7 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature,low,high = get_weather()
-data = {"date":{"value":get_today(),"color":"#EED2EE"},"city":{"value":"马鞍山","color":"#808A87"},"low":{"value":low,"color":"#436EEE"},"high":{"value":high,"color":"#FF6100"},"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count(),"color":"#87CEEB"},"birthday":{"value":get_birthday(),"color":"#FF8000"},"words":{"value":get_words(),"color":"#173177"}}
+data = {"date":{"value":get_today(),"color":"#87CEFA"},"city":{"value":"马鞍山","color":"#B0C4DE"},"low":{"value":low,"color":"#7CFC00"},"high":{"value":high,"color":"#FF7D40"},"weather":{"value":wea,"color":"#DDA0DD"},"temperature":{"value":temperature},"love_days":{"value":get_count(),"color":"#FFC0CB"},"birthday":{"value":get_birthday(),"color":"#FFD700"},"words":{"value":get_words(),"color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 res2 = wm.send_template(user_id2, template_id, data)
 
