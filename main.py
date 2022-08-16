@@ -19,13 +19,13 @@ user_id2 = os.environ["USER_ID2"]
 template_id = os.environ["TEMPLATE_ID"]
 
 def get_today():
-    week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
-    year = localtime().tm_year
-    month = localtime().tm_mon
-    day = localtime().tm_mday
-    today = datetime.date(datetime(year=year, month=month, day=day))
-    week = week_list[today.isoweekday() % 7]
- return "{} {}".format(today, week)
+  week_list=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"]
+  year=localtime().tm_year
+  month=localtime().tm_mon
+  day=localtime().tm_mday
+  today=datetime.date(datetime(year=year,month=month,day=day))
+  week=week_list[today.isoweekday()%7]
+  return "{} {}".format(today,week)
 
 def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
